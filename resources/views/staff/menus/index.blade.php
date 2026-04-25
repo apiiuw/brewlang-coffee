@@ -1,4 +1,4 @@
-@extends('layouts.staff')
+@extends('layouts.owner')
 
 @section('content')
 <div class="max-w-7xl mx-auto">
@@ -7,7 +7,7 @@
             <p class="text-xs font-semibold uppercase tracking-[0.3em] text-amber-400/70">Management</p>
             <h1 class="font-display mt-2 text-3xl font-black text-stone-50">Menu Management</h1>
         </div>
-        <a href="{{ route('staff.menus.create') }}" class="btn-primary !rounded-xl glow-amber flex-shrink-0">
+        <a href="{{ route('owner.menus.create') }}" class="btn-primary !rounded-xl glow-amber flex-shrink-0">
             <i class="fa-solid fa-plus text-sm"></i>
             New Menu Item
         </a>
@@ -24,7 +24,7 @@
         @forelse($menus as $menu)
             <article class="rounded-2xl border border-stone-800 bg-stone-900 p-4">
                 <div class="flex items-start gap-4">
-                    <img src="{{ $menu->photo_url ?? asset('images/menu-placeholder.jpg') }}" 
+                    <img src="{{ $menu->photo_url ?? asset('images/menu-placeholder.jpg') }}"
                          alt="{{ $menu->name }}"
                          class="h-16 w-16 rounded-2xl object-cover border border-stone-700 flex-shrink-0">
                     <div class="min-w-0 flex-1">
@@ -41,14 +41,14 @@
                             </span>
                         </div>
                         <div class="mt-4 flex flex-col gap-2 sm:flex-row">
-                            <form action="{{ route('staff.menus.toggle', $menu) }}" method="POST" class="w-full sm:w-auto">
+                            <form action="{{ route('owner.menus.toggle', $menu) }}" method="POST" class="w-full sm:w-auto">
                                 @csrf
                                 @method('PATCH')
                                 <button type="submit" class="btn-secondary w-full justify-center !rounded-xl !py-2.5 !text-sm">
                                     {{ $menu->is_active ? 'Deactivate' : 'Activate' }}
                                 </button>
                             </form>
-                            <a href="{{ route('staff.menus.edit', $menu) }}" class="btn-primary w-full justify-center !rounded-xl !py-2.5 !text-sm sm:w-auto">
+                            <a href="{{ route('owner.menus.edit', $menu) }}" class="btn-primary w-full justify-center !rounded-xl !py-2.5 !text-sm sm:w-auto">
                                 Edit
                             </a>
                         </div>
@@ -59,7 +59,7 @@
             <x-empty-state
                 title="No menu items found"
                 description="Create your first menu item to start selling products."
-                :action-href="route('staff.menus.create')"
+                :action-href="route('owner.menus.create')"
                 action-label="Create Menu Item"
             />
         @endforelse
@@ -82,7 +82,7 @@
                     @forelse($menus as $menu)
                     <tr>
                         <td>
-                            <img src="{{ $menu->photo_url ?? asset('images/menu-placeholder.jpg') }}" 
+                            <img src="{{ $menu->photo_url ?? asset('images/menu-placeholder.jpg') }}"
                                  alt="{{ $menu->name }}"
                                  class="h-10 w-10 rounded-xl object-cover border border-stone-700">
                         </td>
@@ -98,14 +98,14 @@
                         </td>
                         <td class="text-right">
                             <div class="flex items-center justify-end gap-3">
-                                <form action="{{ route('staff.menus.toggle', $menu) }}" method="POST" class="inline-block">
+                                <form action="{{ route('owner.menus.toggle', $menu) }}" method="POST" class="inline-block">
                                     @csrf
                                     @method('PATCH')
                                     <button type="submit" class="text-xs font-semibold text-stone-500 hover:text-amber-400 transition">
                                         {{ $menu->is_active ? 'Deactivate' : 'Activate' }}
                                     </button>
                                 </form>
-                                <a href="{{ route('staff.menus.edit', $menu) }}" class="text-xs font-semibold text-stone-500 hover:text-amber-400 transition">
+                                <a href="{{ route('owner.menus.edit', $menu) }}" class="text-xs font-semibold text-stone-500 hover:text-amber-400 transition">
                                     <i class="fa-solid fa-pen text-[10px]"></i>
                                     Edit
                                 </a>
@@ -118,7 +118,7 @@
                             <x-empty-state
                                 title="No menu items found"
                                 description="Create your first menu item to start selling products."
-                                :action-href="route('staff.menus.create')"
+                                :action-href="route('owner.menus.create')"
                                 action-label="Create Menu Item"
                             />
                         </td>

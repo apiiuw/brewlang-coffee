@@ -30,6 +30,9 @@ class CheckoutService
                 'customer_phone' => $customerData['customer_phone'],
                 'customer_email' => $customerData['customer_email'],
                 'table_number' => $customerData['table_number'],
+                'payment_method' => $customerData['payment_method'],
+                'payment_status' => 'pending',
+                'payment_proof' => null,
                 'status' => 'unpaid',
                 'total_price' => $total,
             ]);

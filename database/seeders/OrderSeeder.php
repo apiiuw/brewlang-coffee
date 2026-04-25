@@ -39,6 +39,8 @@ class OrderSeeder extends Seeder
                 'customer_phone' => fake()->numerify('08##########'),
                 'customer_email' => fake()->unique()->safeEmail(),
                 'table_number' => (string) (($index % 12) + 1),
+                'payment_method' => $index % 2 === 0 ? 'cashier' : 'qris',
+                'payment_status' => $index % 2 === 0 ? 'pending' : 'waiting_verification',
                 'status' => $status,
                 'total_price' => $total,
             ]);

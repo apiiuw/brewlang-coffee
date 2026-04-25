@@ -40,4 +40,27 @@ class ReportTest extends TestCase
         $response->assertSee('50.000');
         $response->assertDontSee('70.000');
     }
+
+    public function test_owner_can_download_report_pdf(): void
+    {
+        $owner = User::factory()->owner()->create();
+
+        Order::factory()->paid()->create([
+            'total_price' => 50000,
+            'created_at' => now()->subDay(),
+        ]);
+
+        Expense::factory()->create([
+            'user_id' => $owner->id,
+            'title' => 'Milk Supply',
+            'amount' => 20000,
+            'expense_date' => now()->subDay()->toDateString(),
+        ]);
+
+        $response = $this->actingAs($owner)->get('/owner/reports/pdf?date_from=' . now()->subDays(2)->toDateString() . '&date_to=' . now()->toDateString());
+
+        $response->assertOk();
+        $response->assertHeader('content-type', 'application/pdf');
+        $response->assertHeader('content-disposition');
+    }
 }

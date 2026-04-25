@@ -19,7 +19,7 @@
                 <div class="w-9 h-9 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center transition group-hover:bg-amber-400/20">
                     <i class="fa-solid fa-mug-hot text-amber-400 text-sm"></i>
                 </div>
-                <span class="text-xl font-bold tracking-tight text-stone-50">Brewlang</span>
+                <span class="text-xl font-bold tracking-tight text-stone-50">Brewlang Coffee</span>
             </a>
 
             {{-- Right: cart + auth + mobile toggle --}}

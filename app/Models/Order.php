@@ -12,7 +12,9 @@ class Order extends Model
 
     protected $fillable = [
         'order_code', 'customer_name', 'customer_phone',
-        'customer_email', 'table_number', 'status', 'total_price',
+        'customer_email', 'table_number',
+        'payment_method', 'payment_status', 'payment_proof',
+        'status', 'total_price',
     ];
     protected $casts = ['total_price' => 'decimal:2'];
 
@@ -39,5 +41,32 @@ class Order extends Model
             'all_done'    => 'Completed',
             default       => ucfirst($this->status),
         };
+    }
+
+    public function getPaymentMethodLabelAttribute(): string
+    {
+        return match ($this->payment_method) {
+            'cashier' => 'Cashier',
+            'qris' => 'QRIS',
+            default => strtoupper((string) $this->payment_method),
+        };
+    }
+
+    public function getPaymentStatusLabelAttribute(): string
+    {
+        return match ($this->payment_status) {
+            'pending' => 'Pending',
+            'waiting_verification' => 'Waiting Verification',
+            default => str((string) $this->payment_status)->headline()->value(),
+        };
+    }
+
+    public function getPaymentProofUrlAttribute(): ?string
+    {
+        if (!$this->payment_proof) {
+            return null;
+        }
+
+        return asset('storage/' . ltrim($this->payment_proof, '/'));
     }
 }

@@ -33,6 +33,30 @@
                 </div>
             </div>
 
+            <div class="mt-4 grid gap-4 md:grid-cols-2">
+                <div class="rounded-xl bg-stone-800 border border-stone-700 p-4">
+                    <p class="text-xs text-stone-500">Payment Method</p>
+                    <div class="mt-2">
+                        <x-payment-method-badge :method="$order->payment_method" />
+                    </div>
+                </div>
+                <div class="rounded-xl bg-stone-800 border border-stone-700 p-4">
+                    <p class="text-xs text-stone-500">Payment Status</p>
+                    <div class="mt-2">
+                        <x-payment-status-badge :status="$order->payment_status" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4 rounded-xl bg-stone-800 border border-stone-700 p-4">
+                <p class="text-xs text-stone-500">Payment Proof</p>
+                @if($order->payment_proof_url)
+                    <img src="{{ $order->payment_proof_url }}" alt="Payment proof {{ $order->order_code }}" class="mt-2 h-56 w-full rounded-xl border border-stone-700 object-contain bg-stone-900">
+                @else
+                    <p class="mt-2 text-sm text-stone-500">No payment proof uploaded.</p>
+                @endif
+            </div>
+
             <div class="mt-8 space-y-3 lg:hidden">
                 @foreach($order->items as $item)
                     <article class="rounded-2xl border border-stone-800 bg-stone-800/50 p-4">

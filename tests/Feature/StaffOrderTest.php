@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 
 class StaffOrderTest extends TestCase
@@ -13,8 +14,12 @@ class StaffOrderTest extends TestCase
 
     public function test_staff_can_update_order_status_forward(): void
     {
+        Mail::fake();
+
         $staff = User::factory()->staff()->create();
-        $order = Order::factory()->unpaid()->create();
+        $order = Order::factory()->unpaid()->create([
+            'customer_email' => 'customer@example.com',
+        ]);
 
         $response = $this->actingAs($staff)->patch("/staff/orders/{$order->id}/status", [
             'status' => 'paid',
@@ -22,6 +27,9 @@ class StaffOrderTest extends TestCase
 
         $response->assertRedirect();
         $this->assertEquals('paid', $order->fresh()->status);
+        Mail::assertSent(\App\Mail\OrderStatusUpdatedMail::class, function (\App\Mail\OrderStatusUpdatedMail $mail) {
+            return $mail->hasTo('customer@example.com');
+        });
     }
 
     public function test_staff_cannot_regress_order_status(): void

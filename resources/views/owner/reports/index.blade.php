@@ -7,6 +7,56 @@
     .no-print { display: none !important; }
     body { background-color: #fff !important; color: #000 !important; }
     main { padding: 0 !important; }
+    .rounded-2xl,
+    .bg-stone-900,
+    .bg-amber-400\/5,
+    .border-stone-800,
+    .border-amber-400\/20 {
+        background: #fff !important;
+        border-color: #d6d3d1 !important;
+        box-shadow: none !important;
+    }
+    .max-h-\[500px\],
+    .overflow-y-auto,
+    .overflow-hidden {
+        max-height: none !important;
+        overflow: visible !important;
+    }
+    table,
+    thead,
+    tbody,
+    tr,
+    th,
+    td,
+    p,
+    h1,
+    h2,
+    h3,
+    span,
+    i {
+        color: #000 !important;
+    }
+    .text-amber-400,
+    .text-emerald-400,
+    .text-red-400,
+    .text-stone-50,
+    .text-stone-200,
+    .text-stone-500,
+    .text-stone-600,
+    .text-gradient-amber {
+        color: #000 !important;
+        -webkit-text-fill-color: #000 !important;
+    }
+    .table-dark th,
+    .table-dark td {
+        border-color: #d6d3d1 !important;
+    }
+    .print\:block {
+        display: block !important;
+    }
+    .glow-amber {
+        box-shadow: none !important;
+    }
 }
 </style>
 
@@ -16,10 +66,13 @@
             <p class="text-xs font-semibold uppercase tracking-[0.3em] text-amber-400/70">Finance</p>
             <h1 class="font-display mt-2 text-3xl font-black text-stone-50">Business Report</h1>
         </div>
-        <button onclick="window.print()" class="no-print btn-secondary !rounded-xl flex items-center gap-2">
+        <a
+            href="{{ route('owner.reports.pdf', ['date_from' => $date_from, 'date_to' => $date_to]) }}"
+            class="no-print btn-secondary !rounded-xl flex items-center gap-2"
+        >
             <i class="fa-solid fa-print text-sm"></i>
             Print Report
-        </button>
+        </a>
     </div>
 
     {{-- Filter --}}

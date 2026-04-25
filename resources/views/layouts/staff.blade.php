@@ -30,7 +30,6 @@
                         <nav class="space-y-1">
                             <a href="{{ route('staff.dashboard') }}" class="sidebar-link {{ request()->routeIs('staff.dashboard') ? 'active' : '' }}"> <i class="fa-solid fa-gauge-high w-5 text-center text-sm"></i> Dashboard </a>
                             <a href="{{ route('staff.orders.index') }}" class="sidebar-link {{ request()->routeIs('staff.orders.*') ? 'active' : '' }}"> <i class="fa-solid fa-receipt w-5 text-center text-sm"></i> Orders </a>
-                            <a href="{{ route('staff.menus.index') }}" class="sidebar-link {{ request()->routeIs('staff.menus.*') ? 'active' : '' }}"> <i class="fa-solid fa-utensils w-5 text-center text-sm"></i> Menu Management </a>
                         </nav>
                         <div class="mt-3 border-t border-stone-800 pt-3">
                             <div class="mb-3 flex items-center gap-3">
@@ -85,11 +84,6 @@
                    class="sidebar-link {{ request()->routeIs('staff.orders.*') ? 'active' : '' }}">
                     <i class="fa-solid fa-receipt w-5 text-center text-sm"></i>
                     Orders
-                </a>
-                <a href="{{ route('staff.menus.index') }}"
-                   class="sidebar-link {{ request()->routeIs('staff.menus.*') ? 'active' : '' }}">
-                    <i class="fa-solid fa-utensils w-5 text-center text-sm"></i>
-                    Menu Management
                 </a>
             </nav>
 

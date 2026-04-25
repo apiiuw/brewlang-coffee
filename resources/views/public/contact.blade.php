@@ -19,25 +19,25 @@
         {{-- Contact Info --}}
         <div class="space-y-4">
             <div class="rounded-2xl border border-stone-800 bg-stone-900 p-4 flex items-start gap-4 sm:p-5">
-                <div class="w-10 h-10 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center flex-shrink-0">
+                <div class="w-10 h-10 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center shrink-0">
                     <i class="fa-solid fa-envelope text-amber-400 text-sm"></i>
                 </div>
                 <div>
                     <p class="text-xs text-stone-500 uppercase tracking-widest font-semibold">Email</p>
-                    <p class="mt-1 text-sm text-stone-200 font-medium">hello@brewlang.test</p>
+                    <p class="mt-1 text-sm text-stone-200 font-medium">brewlangcoffee@gmail.com</p>
                 </div>
             </div>
             <div class="rounded-2xl border border-stone-800 bg-stone-900 p-4 flex items-start gap-4 sm:p-5">
-                <div class="w-10 h-10 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center flex-shrink-0">
+                <div class="w-10 h-10 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center shrink-0">
                     <i class="fa-solid fa-phone text-amber-400 text-sm"></i>
                 </div>
                 <div>
                     <p class="text-xs text-stone-500 uppercase tracking-widest font-semibold">Phone</p>
-                    <p class="mt-1 text-sm text-stone-200 font-medium">+62 812-3456-7890</p>
+                    <p class="mt-1 text-sm text-stone-200 font-medium">+62 822-8999-1560</p>
                 </div>
             </div>
             <div class="rounded-2xl border border-stone-800 bg-stone-900 p-4 flex items-start gap-4 sm:p-5">
-                <div class="w-10 h-10 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center flex-shrink-0">
+                <div class="w-10 h-10 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center shrink-0">
                     <i class="fa-solid fa-location-dot text-amber-400 text-sm"></i>
                 </div>
                 <div>
@@ -50,21 +50,39 @@
         {{-- Contact Form --}}
         <div class="rounded-3xl border border-stone-800 bg-stone-900 p-4 sm:p-6">
             <h2 class="font-display text-xl font-bold text-stone-100 mb-6">Send a message</h2>
-            <form action="#" method="POST" class="space-y-4">
+            @if(session('success'))
+                <div class="alert-success-dark mb-4 flex items-center gap-3">
+                    <i class="fa-solid fa-circle-check text-emerald-400 shrink-0"></i>
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if($errors->any())
+                <div class="alert-error-dark mb-4 flex items-start gap-3">
+                    <i class="fa-solid fa-circle-exclamation text-red-400 mt-0.5 shrink-0"></i>
+                    <div class="text-sm space-y-1">
+                        @foreach($errors->all() as $error)
+                            <p>{{ $error }}</p>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+
+            <form action="{{ route('contact.send') }}" method="POST" class="space-y-4">
                 @csrf
                 <div>
                     <label class="mb-1.5 block text-xs font-semibold text-stone-500 uppercase tracking-wider">Name</label>
-                    <input type="text" class="input-dark" placeholder="Your name">
+                    <input type="text" name="name" value="{{ old('name') }}" class="input-dark" placeholder="Your name" required>
                 </div>
                 <div>
                     <label class="mb-1.5 block text-xs font-semibold text-stone-500 uppercase tracking-wider">Email</label>
-                    <input type="email" class="input-dark" placeholder="you@email.com">
+                    <input type="email" name="email" value="{{ old('email') }}" class="input-dark" placeholder="you@email.com" required>
                 </div>
                 <div>
                     <label class="mb-1.5 block text-xs font-semibold text-stone-500 uppercase tracking-wider">Message</label>
-                    <textarea rows="4" class="input-dark resize-none" placeholder="What's on your mind?"></textarea>
+                    <textarea name="message" rows="4" class="input-dark resize-none" placeholder="What's on your mind?" required>{{ old('message') }}</textarea>
                 </div>
-                <button type="button" class="btn-primary w-full min-h-12 !rounded-2xl glow-amber mt-2">
+                <button type="submit" class="btn-primary w-full min-h-12 rounded-2xl! glow-amber mt-2">
                     <i class="fa-solid fa-paper-plane text-sm"></i>
                     Send Message
                 </button>

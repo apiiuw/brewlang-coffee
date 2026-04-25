@@ -21,6 +21,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/menu/{category?}', [MenuBrowseController::class, 'index'])->name('menu');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::post('/contact', [PageController::class, 'sendContact'])->name('contact.send');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
@@ -30,6 +31,7 @@ Route::delete('/cart/remove/{menuId}', [CartController::class, 'remove'])->name(
 
 Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
 Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+Route::post('/checkout/payment-proof', [CheckoutController::class, 'uploadPaymentProof'])->name('checkout.paymentProof');
 
 Route::get('/login', [LoginController::class, 'show'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
@@ -41,6 +43,10 @@ Route::middleware(['auth', 'staff'])->prefix('staff')->name('staff.')->group(fun
     Route::get('/orders', [StaffOrderController::class, 'index'])->name('orders.index');
     Route::get('/orders/{order}', [StaffOrderController::class, 'show'])->name('orders.show');
     Route::patch('/orders/{order}/status', [StaffOrderController::class, 'updateStatus'])->name('orders.updateStatus');
+});
+
+Route::middleware(['auth', 'owner'])->prefix('owner')->name('owner.')->group(function () {
+    Route::get('/dashboard', [OwnerDashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/menus', [StaffMenuController::class, 'index'])->name('menus.index');
     Route::get('/menus/create', [StaffMenuController::class, 'create'])->name('menus.create');
@@ -48,10 +54,6 @@ Route::middleware(['auth', 'staff'])->prefix('staff')->name('staff.')->group(fun
     Route::get('/menus/{menu}/edit', [StaffMenuController::class, 'edit'])->name('menus.edit');
     Route::put('/menus/{menu}', [StaffMenuController::class, 'update'])->name('menus.update');
     Route::patch('/menus/{menu}/toggle', [StaffMenuController::class, 'toggleActive'])->name('menus.toggle');
-});
-
-Route::middleware(['auth', 'owner'])->prefix('owner')->name('owner.')->group(function () {
-    Route::get('/dashboard', [OwnerDashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/orders', [OwnerOrderController::class, 'index'])->name('orders.index');
     Route::get('/orders/{order}', [OwnerOrderController::class, 'show'])->name('orders.show');
@@ -66,4 +68,5 @@ Route::middleware(['auth', 'owner'])->prefix('owner')->name('owner.')->group(fun
     Route::patch('/staff/{user}/toggle', [StaffAccountController::class, 'toggleActive'])->name('staff.toggle');
 
     Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
+    Route::get('/reports/pdf', [ReportController::class, 'exportPdf'])->name('reports.pdf');
 });

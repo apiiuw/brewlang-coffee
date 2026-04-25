@@ -1,9 +1,9 @@
-@extends('layouts.staff')
+@extends('layouts.owner')
 
 @section('content')
 <div class="max-w-2xl mx-auto animate-fade-in-up">
     <div class="mb-5 sm:mb-6">
-        <a href="{{ route('staff.menus.index') }}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-stone-500 hover:text-amber-400 transition">
+        <a href="{{ route('owner.menus.index') }}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-stone-500 hover:text-amber-400 transition">
             <i class="fa-solid fa-arrow-left text-xs"></i>
             Back to Menu List
         </a>
@@ -26,7 +26,7 @@
     @endif
 
     <div class="rounded-2xl border border-stone-800 bg-stone-900 p-4 sm:p-6">
-        <form action="{{ route('staff.menus.store') }}" method="POST" enctype="multipart/form-data" class="space-y-5">
+        <form action="{{ route('owner.menus.store') }}" method="POST" enctype="multipart/form-data" class="space-y-5">
             @csrf
 
             <div>

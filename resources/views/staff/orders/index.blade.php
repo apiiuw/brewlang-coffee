@@ -43,6 +43,22 @@
                         <p class="mt-1 text-sm font-semibold text-stone-200">{{ $order->items->sum('quantity') }} items</p>
                     </div>
                 </div>
+                <div class="mt-3 grid gap-2">
+                    <div class="flex items-center justify-between rounded-xl border border-stone-800 bg-stone-800/60 p-3">
+                        <p class="text-[11px] uppercase tracking-wider text-stone-500">Payment Method</p>
+                        <x-payment-method-badge :method="$order->payment_method" />
+                    </div>
+                    <div class="flex items-center justify-between rounded-xl border border-stone-800 bg-stone-800/60 p-3">
+                        <p class="text-[11px] uppercase tracking-wider text-stone-500">Payment Status</p>
+                        <x-payment-status-badge :status="$order->payment_status" />
+                    </div>
+                    @if($order->payment_proof_url)
+                        <div class="rounded-xl border border-stone-800 bg-stone-800/60 p-3">
+                            <p class="text-[11px] uppercase tracking-wider text-stone-500">Payment Proof</p>
+                            <img src="{{ $order->payment_proof_url }}" alt="Payment proof {{ $order->order_code }}" class="mt-2 h-28 w-full rounded-lg border border-stone-700 object-cover">
+                        </div>
+                    @endif
+                </div>
                 <a href="{{ route('staff.orders.show', $order) }}" class="btn-secondary mt-4 w-full justify-center !rounded-xl !py-2.5 !text-sm">
                     Open Order
                 </a>
@@ -61,6 +77,8 @@
                         <th>Customer</th>
                         <th>Items</th>
                         <th>Status</th>
+                        <th>Payment</th>
+                        <th>Proof</th>
                         <th class="text-right">Actions</th>
                     </tr>
                 </thead>
@@ -77,6 +95,19 @@
                             </td>
                             <td class="text-stone-500 text-sm">{{ $order->items->sum('quantity') }} items</td>
                             <td><x-order-status-badge :status="$order->status" /></td>
+                            <td>
+                                <div class="space-y-1">
+                                    <x-payment-method-badge :method="$order->payment_method" />
+                                    <x-payment-status-badge :status="$order->payment_status" />
+                                </div>
+                            </td>
+                            <td>
+                                @if($order->payment_proof_url)
+                                    <img src="{{ $order->payment_proof_url }}" alt="Payment proof {{ $order->order_code }}" class="h-12 w-16 rounded-lg border border-stone-700 object-cover">
+                                @else
+                                    <span class="text-xs text-stone-600">-</span>
+                                @endif
+                            </td>
                             <td class="text-right">
                                 <a href="{{ route('staff.orders.show', $order) }}" class="inline-flex items-center gap-1.5 text-xs font-semibold text-stone-400 hover:text-amber-400 transition">
                                     Open <i class="fa-solid fa-arrow-right text-[10px]"></i>
@@ -85,7 +116,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="py-8">
+                            <td colspan="7" class="py-8">
                                 <x-empty-state title="No orders in the queue" description="New customer orders will appear here once checkout is completed." />
                             </td>
                         </tr>

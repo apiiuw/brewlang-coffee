@@ -25,7 +25,7 @@ class StaffMenuController extends Controller
     public function store(StoreMenuRequest $request)
     {
         $data = $request->validated();
-        
+
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
             $filename = $file->hashName();
@@ -34,10 +34,10 @@ class StaffMenuController extends Controller
         }
 
         $data['is_active'] = $request->has('is_active') ? true : false;
-        
+
         Menu::create($data);
 
-        return redirect()->route('staff.menus.index')->with('success', 'Menu item added successfully.');
+        return redirect()->route('owner.menus.index')->with('success', 'Menu item added successfully.');
     }
 
     public function edit(Menu $menu)
@@ -67,7 +67,7 @@ class StaffMenuController extends Controller
 
         $menu->update($data);
 
-        return redirect()->route('staff.menus.index')->with('success', 'Menu item updated successfully.');
+        return redirect()->route('owner.menus.index')->with('success', 'Menu item updated successfully.');
     }
 
     public function toggleActive(Menu $menu)

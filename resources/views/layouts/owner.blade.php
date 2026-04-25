@@ -29,6 +29,7 @@
                     <div class="absolute right-0 mt-3 w-[min(18rem,calc(100vw-2rem))] rounded-2xl border border-stone-800 bg-stone-900 p-3 shadow-2xl">
                         <nav class="space-y-1">
                             <a href="{{ route('owner.dashboard') }}" class="sidebar-link {{ request()->routeIs('owner.dashboard') ? 'active' : '' }}"> <i class="fa-solid fa-gauge-high w-5 text-center text-sm"></i> Dashboard </a>
+                            <a href="{{ route('owner.menus.index') }}" class="sidebar-link {{ request()->routeIs('owner.menus.*') ? 'active' : '' }}"> <i class="fa-solid fa-utensils w-5 text-center text-sm"></i> Menu Management </a>
                             <a href="{{ route('owner.orders.index') }}" class="sidebar-link {{ request()->routeIs('owner.orders.*') ? 'active' : '' }}"> <i class="fa-solid fa-receipt w-5 text-center text-sm"></i> Orders </a>
                             <a href="{{ route('owner.expenses.index') }}" class="sidebar-link {{ request()->routeIs('owner.expenses.*') ? 'active' : '' }}"> <i class="fa-solid fa-wallet w-5 text-center text-sm"></i> Expenses </a>
                             <a href="{{ route('owner.staff.index') }}" class="sidebar-link {{ request()->routeIs('owner.staff.*') ? 'active' : '' }}"> <i class="fa-solid fa-users w-5 text-center text-sm"></i> Staff Accounts </a>
@@ -82,6 +83,11 @@
                    class="sidebar-link {{ request()->routeIs('owner.dashboard') ? 'active' : '' }}">
                     <i class="fa-solid fa-gauge-high w-5 text-center text-sm"></i>
                     Dashboard
+                </a>
+                <a href="{{ route('owner.menus.index') }}"
+                   class="sidebar-link {{ request()->routeIs('owner.menus.*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-utensils w-5 text-center text-sm"></i>
+                    Menu Management
                 </a>
                 <a href="{{ route('owner.orders.index') }}"
                    class="sidebar-link {{ request()->routeIs('owner.orders.*') ? 'active' : '' }}">

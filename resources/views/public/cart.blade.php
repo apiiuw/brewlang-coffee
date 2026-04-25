@@ -139,6 +139,41 @@
                             class="input-dark" placeholder="e.g. 12" required>
                         @error('table_number')<p class="mt-1.5 text-xs text-red-400">{{ $message }}</p>@enderror
                     </div>
+                    <div>
+                        <p class="mb-2 block text-xs font-semibold text-stone-500 uppercase tracking-wider">Payment method</p>
+                        <div class="grid gap-2">
+
+                            <label class="cursor-pointer">
+                                <input type="radio" name="payment_method" value="cashier"
+                                    class="peer hidden"
+                                    {{ old('payment_method', 'cashier') === 'cashier' ? 'checked' : '' }}>
+
+                                <div class="flex items-start gap-3 rounded-xl border border-stone-700 bg-stone-800/60 px-3 py-3
+                                    peer-checked:border-amber-400 peer-checked:bg-amber-400/10">
+
+                                    <span class="block text-sm font-semibold text-stone-200 peer-checked:text-amber-400">
+                                        Cashier
+                                    </span>
+                                </div>
+                            </label>
+
+                            <label class="cursor-pointer">
+                                <input type="radio" name="payment_method" value="qris"
+                                    class="peer hidden"
+                                    {{ old('payment_method') === 'qris' ? 'checked' : '' }}>
+
+                                <div class="flex items-start gap-3 rounded-xl border border-stone-700 bg-stone-800/60 px-3 py-3
+                                    peer-checked:border-amber-400 peer-checked:bg-amber-400/10">
+
+                                    <span class="block text-sm font-semibold text-stone-200 peer-checked:text-amber-400">
+                                        QRIS
+                                    </span>
+                                </div>
+                            </label>
+
+                        </div>
+                        @error('payment_method')<p class="mt-1.5 text-xs text-red-400">{{ $message }}</p>@enderror
+                    </div>
                     @error('cart')<p class="text-xs text-red-400">{{ $message }}</p>@enderror
                     <button type="submit" class="btn-primary glow-amber min-h-12 w-full mt-2 !rounded-2xl">
                         <i class="fa-solid fa-arrow-right text-sm"></i>

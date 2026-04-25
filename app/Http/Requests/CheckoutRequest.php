@@ -19,6 +19,7 @@ class CheckoutRequest extends FormRequest
             'customer_name' => ['required', 'string', 'max:255'],
             'customer_phone' => ['required', 'string', 'max:20'],
             'customer_email' => ['required', 'email', 'max:255'],
+            'payment_method' => ['required', 'in:cashier,qris'],
         ];
     }
 
