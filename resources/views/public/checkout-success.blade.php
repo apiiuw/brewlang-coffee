@@ -55,7 +55,7 @@
             @if($order->payment_method === 'qris')
                 <div class="mt-6 rounded-2xl border border-stone-800 bg-stone-900 p-4 text-left">
                     <p class="text-xs font-semibold uppercase tracking-[0.2em] text-amber-400/70">QRIS</p>
-                    <img src="{{ $qrisImageUrl }}" alt="QRIS code" class="mx-auto mt-3 h-56 w-56 rounded-2xl border border-stone-700 bg-white p-2 object-contain">
+                    <img src="{{ asset('images/qris-brewlang.jpeg') }}" alt="QRIS code" class="mx-auto mt-3 h-56 w-56 rounded-2xl border border-stone-700 bg-white p-2 object-contain">
 
                     <form action="{{ route('checkout.paymentProof') }}" method="POST" enctype="multipart/form-data" class="mt-4 space-y-3">
                         @csrf

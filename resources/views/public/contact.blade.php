@@ -33,7 +33,7 @@
                 </div>
                 <div>
                     <p class="text-xs text-stone-500 uppercase tracking-widest font-semibold">Phone</p>
-                    <p class="mt-1 text-sm text-stone-200 font-medium">+62 822-8999-1560</p>
+                    <p class="mt-1 text-sm text-stone-200 font-medium">+62 877-8324-5701</p>
                 </div>
             </div>
             <div class="rounded-2xl border border-stone-800 bg-stone-900 p-4 flex items-start gap-4 sm:p-5">
@@ -44,6 +44,9 @@
                     <p class="text-xs text-stone-500 uppercase tracking-widest font-semibold">Address</p>
                     <p class="mt-1 text-sm text-stone-200 font-medium">123 Coffee Street, Tech City, 10110</p>
                 </div>
+            </div>
+            <div class="rounded-2xl border border-stone-800 bg-stone-900 p-4 flex items-start gap-4 sm:p-5">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126915.1562662319!2d106.63063265730533!3d-6.2507328916577025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fb0079f00a6f%3A0xe14745eab24faa04!2sWarung%20Kopi%20Brewlang!5e0!3m2!1sen!2sid!4v1778496465143!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
 
