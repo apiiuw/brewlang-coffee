@@ -16,10 +16,7 @@
 
             {{-- Logo --}}
             <a href="{{ route('home') }}" class="flex items-center gap-3 group">
-                <div class="w-9 h-9 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center transition group-hover:bg-amber-400/20">
-                    <i class="fa-solid fa-mug-hot text-amber-400 text-sm"></i>
-                </div>
-                <span class="text-xl font-bold tracking-tight text-stone-50">Brewlang Coffee</span>
+                <img src="{{ asset('images/logo-brewlang.png') }}" alt="Brewlang Coffee Logo" class="h-20 object-contain bg-white rounded-md p-1">
             </a>
 
             {{-- Right: cart + auth + mobile toggle --}}
@@ -144,10 +141,7 @@
         <div class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
             <div class="flex flex-col items-center gap-5 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
                 <a href="{{ route('home') }}" class="flex items-center gap-2.5 group">
-                    <div class="w-8 h-8 rounded-lg bg-amber-400/10 border border-amber-400/20 flex items-center justify-center transition group-hover:bg-amber-400/20">
-                        <i class="fa-solid fa-mug-hot text-amber-400 text-xs"></i>
-                    </div>
-                    <span class="font-bold text-stone-300 tracking-tight">Brewlang</span>
+                    <img src="{{ asset('images/logo-brewlang.png') }}" alt="Brewlang Coffee Logo" class="h-20 object-contain bg-white rounded-md p-1">
                 </a>
                 <ul class="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm font-medium text-stone-500">
                     <li><a href="{{ route('about') }}" class="hover:text-amber-400 transition">About</a></li>

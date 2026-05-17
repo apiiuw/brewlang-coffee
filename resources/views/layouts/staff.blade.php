@@ -13,9 +13,7 @@
         <header class="sticky top-0 z-40 border-b border-stone-800 bg-stone-900/95 px-4 py-3 backdrop-blur">
             <div class="flex items-center justify-between gap-3">
                 <div class="flex min-w-0 items-center gap-3">
-                    <div class="flex h-10 w-10 items-center justify-center rounded-xl border border-amber-400/20 bg-amber-400/10">
-                        <i class="fa-solid fa-mug-hot text-sm text-amber-400"></i>
-                    </div>
+                    <img src="{{ asset('images/logo-brewlang.png') }}" alt="Brewlang Coffee Logo" class="h-16 object-contain bg-white rounded-md p-1">
                     <div class="min-w-0">
                         <p class="truncate text-xs font-semibold uppercase tracking-[0.2em] text-amber-400/70">Brewlang</p>
                         <h1 class="truncate text-sm font-bold text-stone-200">Staff Panel</h1>
@@ -63,9 +61,7 @@
             {{-- Sidebar Header --}}
             <div class="border-b border-stone-800 p-5">
                 <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center">
-                        <i class="fa-solid fa-mug-hot text-amber-400 text-sm"></i>
-                    </div>
+                    <img src="{{ asset('images/logo-brewlang.png') }}" alt="Brewlang Coffee Logo" class="h-20 object-contain bg-white rounded-md p-1">
                     <div>
                         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-amber-400/70">Brewlang</p>
                         <h1 class="text-sm font-bold text-stone-200">Staff Panel</h1>

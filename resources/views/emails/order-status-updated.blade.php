@@ -23,16 +23,8 @@
             text-align: center;
         }
         .logo-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 52px;
-            height: 52px;
-            background: rgba(251,191,36,0.10);
-            border: 1px solid rgba(251,191,36,0.25);
-            border-radius: 14px;
+            display: inline-block;
             margin-bottom: 14px;
-            font-size: 22px;
         }
         .brand-name {
             font-size: 22px;
@@ -131,7 +123,9 @@
 
     {{-- Header --}}
     <div class="header">
-        <div class="logo-icon">☕</div>
+        <div class="logo-icon">
+            <img src="{{ $message->embed(public_path('images/logo-brewlang.png')) }}" alt="Brewlang Coffee" style="width: 52px; height: 52px; object-fit: contain;">
+        </div>
         <div class="brand-name">Brewlang Coffee</div>
         <div class="header-sub">Order Status Update</div>
     </div>
