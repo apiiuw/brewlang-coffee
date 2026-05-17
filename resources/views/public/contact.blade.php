@@ -42,7 +42,7 @@
                 </div>
                 <div>
                     <p class="text-xs text-stone-500 uppercase tracking-widest font-semibold">Address</p>
-                    <p class="mt-1 text-sm text-stone-200 font-medium">123 Coffee Street, Tech City, 10110</p>
+                    <p class="mt-1 text-sm text-stone-200 font-medium">Jl. Komp. Japos No.n 2/1, RT.001/RW.014, Paninggilan, Kec. Ciledug, Kota Tangerang, Banten 15153</p>
                 </div>
             </div>
             <div class="rounded-2xl border border-stone-800 bg-stone-900 p-4 flex items-start gap-4 sm:p-5">
