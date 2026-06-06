@@ -17,8 +17,13 @@ class OrderStatusService
             );
         }
 
-        $order->update(['status' => $newStatus]);
+        $updates = ['status' => $newStatus];
 
+        if ($newStatus === 'paid') {
+            $updates['payment_status'] = 'paid';
+        }
+
+        $order->update($updates);
         try {
             Mail::to($order->customer_email)->send(new OrderStatusUpdatedMail($order));
         } catch (\Throwable $exception) {
